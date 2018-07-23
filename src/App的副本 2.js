@@ -23,26 +23,20 @@ class App extends React.Component {
     return (
       <Scene>
         <a-assets>
-          <img id="groundTexture" src={require('./resource/floorbig.jpg')}/>
-          <img id="skyTexture" src={require('./resource/skybig.jpg')}/>
-          <img id="boxTexture" src={require('./resource/box.jpg')}/>
-  <img id="texture" src={require('./resource/box.jpg')}/>
+          <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg"/>
+          <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg"/>
         </a-assets>
-
-        <a-box color="tomato" depth="2" height="4" width="0.5"></a-box>
-
-<a-box src="#texture" position="2 10 0" rotation="45 45 0"></a-box>
 
         <Entity primitive="a-plane" src="#groundTexture" rotation="-90 0 0" height="100" width="100"/>
         <Entity primitive="a-light" type="ambient" color="#445451"/>
         <Entity primitive="a-light" type="point" intensity="2" position="2 4 4"/>
         <Entity primitive="a-sky" height="2048" radius="30" src="#skyTexture" theta-length="90" width="2048"/>
-        <Entity particle-system={{preset: 'dust', color: '#333333,#cccccc', particleCount: 200}}/>
+        <Entity particle-system={{preset: 'snow', particleCount: 2000}}/>
         <Entity text={{value: 'Hello, A-Frame React!', align: 'center'}} position={{x: 0, y: 2, z: -1}}/>
 
         <Entity id="box"
           geometry={{primitive: 'box'}}
-          material={{src: "#boxTexture"}}
+          material={{color: this.state.color, opacity: 0.6}}
           animation__rotate={{property: 'rotation', dur: 2000, loop: true, to: '360 360 360'}}
           animation__scale={{property: 'scale', dir: 'alternate', dur: 100, loop: true, to: '1.1 1.1 1.1'}}
           position={{x: 0, y: 1, z: -3}}
@@ -52,7 +46,7 @@ class App extends React.Component {
                   material={{color: '#24CAFF'}}/>
         </Entity>
 
-        <Entity primitive="a-camera" position="0 10 10">
+        <Entity primitive="a-camera">
           <Entity primitive="a-cursor" animation__click={{property: 'scale', startEvents: 'click', from: '0.1 0.1 0.1', to: '1 1 1', dur: 150}}/>
         </Entity>
       </Scene>
