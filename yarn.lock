@@ -61,6 +61,10 @@ aframe-animation-component@^3.2.5:
   dependencies:
     animejs "^1.1.0"
 
+aframe-cubemap-component@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/aframe-cubemap-component/-/aframe-cubemap-component-0.1.4.tgz#5a44f085ba6c8c6b79859f7ba233ccc01989482e"
+
 aframe-particle-system-component@^1.0.8:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/aframe-particle-system-component/-/aframe-particle-system-component-1.0.11.tgz#ac1f3abef2307b238df58c9358982c987fb10016"

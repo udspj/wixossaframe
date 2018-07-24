@@ -5,6 +5,8 @@ import 'babel-polyfill';
 import {Entity, Scene} from 'aframe-react';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import MoveBoxes from './component/MoveBoxes';
+import Desk from './component/Desk';
 
 class App extends React.Component {
   constructor(props) {
@@ -23,36 +25,24 @@ class App extends React.Component {
     return (
       <Scene>
         <a-assets>
-          <img id="groundTexture" src={require('./resource/floorbig.jpg')}/>
-          <img id="skyTexture" src={require('./resource/skybig.jpg')}/>
-          <img id="boxTexture" src={require('./resource/box.jpg')}/>
-  <img id="texture" src={require('./resource/box.jpg')}/>
+          <img id="groundTexture" src={require('./resource/floor.jpg')}/>
+          <img id="skyTexture" src={require('./resource/sky.jpg')}/>
+          <img id="deskTexture" src={require('./resource/desk.jpg')}/>
         </a-assets>
 
-        <a-box color="tomato" depth="2" height="4" width="0.5"></a-box>
-
-<a-box src="#texture" position="2 10 0" rotation="45 45 0"></a-box>
+        <MoveBoxes center={{x: 0, y: 15, z: 10}} width={6}/>
+        <Entity key='standbox'
+                geometry={{primitive: 'box'}}
+                material={{src: require('./resource/box7.jpg')}}
+                position={{x: 0, y: 9, z: 10}}
+                scale='5 5 5'>
+        </Entity>
+        <Desk texture="#deskTexture"/>
 
         <Entity primitive="a-plane" src="#groundTexture" rotation="-90 0 0" height="100" width="100"/>
-        <Entity primitive="a-light" type="ambient" color="#445451"/>
-        <Entity primitive="a-light" type="point" intensity="2" position="2 4 4"/>
         <Entity primitive="a-sky" height="2048" radius="30" src="#skyTexture" theta-length="90" width="2048"/>
-        <Entity particle-system={{preset: 'dust', color: '#333333,#cccccc', particleCount: 200}}/>
-        <Entity text={{value: 'Hello, A-Frame React!', align: 'center'}} position={{x: 0, y: 2, z: -1}}/>
 
-        <Entity id="box"
-          geometry={{primitive: 'box'}}
-          material={{src: "#boxTexture"}}
-          animation__rotate={{property: 'rotation', dur: 2000, loop: true, to: '360 360 360'}}
-          animation__scale={{property: 'scale', dir: 'alternate', dur: 100, loop: true, to: '1.1 1.1 1.1'}}
-          position={{x: 0, y: 1, z: -3}}
-          events={{click: this.changeColor.bind(this)}}>
-          <Entity animation__scale={{property: 'scale', dir: 'alternate', dur: 100, loop: true, to: '2 2 2'}}
-                  geometry={{primitive: 'box', depth: 0.2, height: 0.2, width: 0.2}}
-                  material={{color: '#24CAFF'}}/>
-        </Entity>
-
-        <Entity primitive="a-camera" position="0 10 10">
+        <Entity primitive="a-camera" position="0 15 10">
           <Entity primitive="a-cursor" animation__click={{property: 'scale', startEvents: 'click', from: '0.1 0.1 0.1', to: '1 1 1', dur: 150}}/>
         </Entity>
       </Scene>
