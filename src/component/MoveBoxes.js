@@ -4,7 +4,7 @@ import 'aframe-particle-system-component';
 import 'babel-polyfill';
 import {Entity} from 'aframe-react';
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 
 class MoveBoxes extends React.Component {
   constructor(props) {
@@ -59,7 +59,7 @@ class MoveBoxes extends React.Component {
             scale={result.size+" "+result.size+" "+result.size}>
             </Entity>
           )
-        }.bind(this))}
+        })}
 
       </Entity>
     );
