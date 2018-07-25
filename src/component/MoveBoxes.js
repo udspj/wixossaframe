@@ -15,8 +15,6 @@ class MoveBoxes extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.width)
-
     const centerpos = this.props.center;
     const hw = this.props.width;
 
