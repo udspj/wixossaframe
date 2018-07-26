@@ -46,10 +46,11 @@ class App extends React.Component {
 
         <Entity primitive="a-plane" src="#groundTexture" rotation="-90 0 0" height="100" width="100"/>
         <Entity primitive="a-sky" height="2048" radius="30" src="#skyTexture" theta-length="90" width="2048"/>
-
-        <Entity primitive="a-camera" position="0 15.2 10">
-          <Entity primitive="a-cursor" animation__click={{property: 'scale', startEvents: 'click', from: '0.1 0.1 0.1', to: '1 1 1', dur: 150}}/>
-        </Entity>
+        <a-entity id="#rig" position="0 13.8 10">
+          <Entity primitive="a-camera">
+            <Entity primitive="a-cursor" animation__click={{property: 'scale', startEvents: 'click', from: '0.1 0.1 0.1', to: '1 1 1', dur: 150}}/>
+          </Entity>
+        </a-entity>
       </Scene>
     );
   }

@@ -4,5 +4,5 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.querySelector('#sceneContainer'));
+ReactDOM.render(<App />, document.getElementById('sceneContainer'));
 registerServiceWorker();
