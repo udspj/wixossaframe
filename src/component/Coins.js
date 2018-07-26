@@ -33,14 +33,14 @@ class Coins extends React.Component {
   }
 
   render () {
-    const center = this.props.center;
+    // const center = this.props.center;
     const startx = this.state.coins.length/2+(Math.ceil(this.state.coins.length/2)-1)*0.2-0.5;
     return (
       <Entity>
 
         {this.state.coins.map(function(result, reactid) {
           var coinimg = 'coin';
-          if(result == 0) {
+          if(result === 0) {
             coinimg = 'coinno';
           }
           return (

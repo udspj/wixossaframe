@@ -4,7 +4,7 @@ import 'aframe-particle-system-component';
 import 'babel-polyfill';
 import {Entity} from 'aframe-react';
 import React from 'react';
-// import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom';
 
 class MoveBoxes extends React.Component {
   constructor(props) {
