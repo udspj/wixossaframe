@@ -4,7 +4,8 @@ import 'aframe-particle-system-component';
 import 'babel-polyfill';
 import {Entity} from 'aframe-react';
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
+import slot from '../../resource/slotcard.png';
 
 class Cards extends React.Component {
   constructor(props) {
@@ -19,10 +20,11 @@ class Cards extends React.Component {
       <Entity>
 
         <Entity geometry={{primitive: 'plane'}} 
-        position={'1.1 '+this.props.cardY+' 8.8'} 
+        position={'1.1 '+this.props.cardY+' '+(this.props.deskZ-0.5)} 
         scale='0.22 0.3 1'
         rotation='90 0 0' 
-        material={{src: require('../../resource/slotcard.png'), side:'double', transparent:true}}></Entity>
+        material={{src: slot, side:'double', transparent:true}}>
+        </Entity>
 
       </Entity>
     );

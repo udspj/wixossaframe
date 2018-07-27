@@ -14,6 +14,7 @@ import AvatarUsed from './cardzone/AvatarUsed';
 import Avatar from './cardzone/Avatar';
 import Lrig from './cardzone/Lrig';
 import LifeLight from './cardzone/LifeLight';
+import Shiguni from './cardzone/Shiguni';
 
 class Desk extends React.Component {
   constructor(props) {
@@ -25,17 +26,22 @@ class Desk extends React.Component {
 
   render () {
     const cardY = 14.1;
+    const deskZ = 8.8;
     return (
       <Entity>
 
         <Entity geometry={{primitive: 'box'}}
         material={{src: this.props.texture}}
-        position={{x: 0, y: 14, z: 9}}
-        scale='3 0.1 1.5'>
+        position={{x: 0, y: 14, z: deskZ}}
+        scale='3 0.1 1.8'>
         </Entity>
 
-        <HandCards cardY={cardY}/>
-        <Cards cardY={cardY}/>
+        <HandCards cardY={cardY} deskZ={deskZ}/>
+        <Cards cardY={cardY} deskZ={deskZ}/>
+        <Shiguni cardY={cardY} deskZ={deskZ}/>
+        <Life cardY={cardY} deskZ={deskZ}/>
+        <Lrig cardY={cardY} deskZ={deskZ}/>
+        <CardsUsed cardY={cardY} deskZ={deskZ}/>
 
       </Entity>
     );
