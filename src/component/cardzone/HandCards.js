@@ -5,6 +5,7 @@ import 'babel-polyfill';
 import {Entity} from 'aframe-react';
 import React from 'react';
 // import ReactDOM from 'react-dom';
+import slot from '../../resource/slothandcard.png';
 
 class HandCards extends React.Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class HandCards extends React.Component {
         position={'0 '+this.props.cardY+' '+(this.props.deskZ+0.7)} 
         scale='2 0.3 1'
         rotation='90 0 0' 
-        material={{src: require('../../resource/slothandcard.png'), side:'double', transparent:true}}>
+        material={{src: slot, side:'double', transparent:true}}>
         </Entity>
 
       </Entity>

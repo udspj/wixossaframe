@@ -5,6 +5,7 @@ import 'babel-polyfill';
 import {Entity} from 'aframe-react';
 import React from 'react';
 // import ReactDOM from 'react-dom';
+import slot from '../../resource/slotcard.png';
 
 class Shiguni extends React.Component {
   constructor(props) {
@@ -22,21 +23,21 @@ class Shiguni extends React.Component {
         position={'-0.5 '+this.props.cardY+' '+(this.props.deskZ-0.2)} 
         scale='0.22 0.3 1'
         rotation='90 0 0' 
-        material={{src: require('../../resource/slotcard.png'), side:'double', transparent:true}}>
+        material={{src: slot, side:'double', transparent:true}}>
         </Entity>
 
         <Entity geometry={{primitive: 'plane'}} 
         position={'0 '+this.props.cardY+' '+(this.props.deskZ-0.5)} 
         scale='0.22 0.3 1'
         rotation='90 0 0' 
-        material={{src: require('../../resource/slotcard.png'), side:'double', transparent:true}}>
+        material={{src: slot, side:'double', transparent:true}}>
         </Entity>
 
         <Entity geometry={{primitive: 'plane'}} 
         position={'0.5 '+this.props.cardY+' '+(this.props.deskZ-0.2)} 
         scale='0.22 0.3 1'
         rotation='90 0 0' 
-        material={{src: require('../../resource/slotcard.png'), side:'double', transparent:true}}>
+        material={{src: slot, side:'double', transparent:true}}>
         </Entity>
 
       </Entity>

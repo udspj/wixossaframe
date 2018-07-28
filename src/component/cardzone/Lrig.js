@@ -5,6 +5,7 @@ import 'babel-polyfill';
 import {Entity} from 'aframe-react';
 import React from 'react';
 // import ReactDOM from 'react-dom';
+import slot from '../../resource/lrigslot.png';
 
 class Lrig extends React.Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class Lrig extends React.Component {
         position={'0 '+this.props.cardY+' '+(this.props.deskZ)} 
         scale='0.22 0.3 1'
         rotation='90 180 0' 
-        material={{src: require('../../resource/lrigslot.png'), side:'double', transparent:true}}>
+        material={{src: slot, side:'double', transparent:true}}>
         </Entity>
 
       </Entity>
