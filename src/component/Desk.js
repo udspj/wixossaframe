@@ -45,6 +45,7 @@ class Desk extends React.Component {
         <AvatarUsed cardY={cardY} deskZ={deskZ}/>
         <Avatar cardY={cardY} deskZ={deskZ}/>
         <Energy cardY={cardY} deskZ={deskZ}/>
+        <LifeLight cardY={cardY} deskZ={deskZ}/>
 
       </Entity>
     );

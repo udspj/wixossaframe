@@ -34,7 +34,7 @@ class Cards extends React.Component {
         </Entity>
 
         <Entity geometry={{primitive: 'plane'}} 
-        position={'1.1 '+(this.props.cardY+0.1)+' '+(this.props.deskZ-0.5)} 
+        position={'1.1 '+(this.props.cardY+0.1+0.001)+' '+(this.props.deskZ-0.5)} 
         scale='0.2 0.28 1'
         rotation='90 180 0' 
         material={{src: cardbk, side:'double', transparent:true}}>
