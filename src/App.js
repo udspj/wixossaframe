@@ -9,6 +9,7 @@ import MoveBoxes from './component/MoveBoxes';
 import Desk from './component/Desk';
 import Character from './component/Character';
 import Coins from './component/Coins';
+import About from './component/About';
 
 class App extends React.Component {
   constructor(props) {
@@ -43,6 +44,7 @@ class App extends React.Component {
         <Desk texture="#deskTexture"/>
         <Character center={{x: 0, y: 14, z: 10.2}}/>
         <Coins center={{x: 0, y: 15, z: 11}} amount={3}/>
+        <About />
 
         <Entity primitive="a-plane" src="#groundTexture" rotation="-90 0 0" height="100" width="100"/>
         <Entity primitive="a-sky" height="2048" radius="30" src="#skyTexture" theta-length="90" width="2048"/>

@@ -23,7 +23,7 @@ class LifeLight extends React.Component {
       const z = Math.cos(2*Math.PI/360*(perangle*i))*radius;
       lights.push({"x":x,"z":z});
     }
-    console.log(lights)
+    // console.log(lights)
     this.setState( { lights:lights } );
   }
 
@@ -35,7 +35,8 @@ class LifeLight extends React.Component {
 
         {this.state.lights.map(function(result, reactid) {
           return (
-            <Entity geometry={{primitive: 'sphere'}} 
+            <Entity key={'light'+reactid} 
+            geometry={{primitive: 'sphere'}} 
             position={result.x+' '+cardy+' '+(cardz+result.z)} 
             scale='0.02 0.02 0.02'
             material={{color:'#fefbaa'}}>
