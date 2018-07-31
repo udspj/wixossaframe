@@ -7,6 +7,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import tama from '../resource/tama.png';
 
+// import store from '../store/store'
+
 class About extends React.Component {
   constructor(props) {
     super(props);
@@ -16,11 +18,12 @@ class About extends React.Component {
     };
   }
 
-  componentDidMount() {
-    
-  }
+  // componentDidMount() {
+  //   console.log(this.context.store)
+  // }
 
   handleClick() {
+    // console.log(store.getState().attentionBoxVisible)
     if(this.state.showreadme) {
       this.setState({readme: 'About this demo:\nThis is only scene showing for battle field in Wixoss TV animation.\nYou can control the cards and put them on the desk but can not play the cards with anyone.\nClick me to close the readme.'});
     }else{
@@ -38,6 +41,7 @@ class About extends React.Component {
         scale='0.5 0.5 0.5'
         rotation='0 90 0'
         material={{src: tama, side:'double', transparent:true}}
+        // events={{click: () => store.dispatch({ type: 'UI_ATTENTIONBOX_TOGGLE' })}}>
         events={{click: this.handleClick.bind(this)}}>
         </Entity>
 
