@@ -1,14 +1,10 @@
-import * as ActionTypes from '../actions'
+import { combineReducers } from 'redux';
+import deck from './deck'
+import sample from './sample'
 
-const initialState = {
-  attentionBoxVisible: true,
-}
+const reducers = combineReducers({
+  deck,
+  sample
+})
 
-export default (state = initialState, action) => {
-  // alert("121231212")
-  switch (action.type) {
-    case ActionTypes.UI_ATTENTIONBOX_TOGGLE:
-      return { ...state, attentionBoxVisible: !state.attentionBoxVisible }
-    default: return state
-  }
-}
+export default reducers;

@@ -1,4 +1,4 @@
-var mainCardsList = [
+export const mainCardsList = {
 "WD17-009":{"img":"card4","amount":4},
 "WD17-010":{"img":"card5","amount":4},
 "WD17-011":{"img":"card6","amount":4},
@@ -9,9 +9,9 @@ var mainCardsList = [
 "WD17-016":{"img":"card2","amount":4},
 "WD17-017":{"img":"card3","amount":4},
 "WD17-018":{"img":"card1","amount":4}
-];
+};
 
-var avatarCardsList = [
+export const avatarCardsList = [
 "WD17-005":{"img":"lrig0"},
 "WD17-004":{"img":"lrig1"},
 "WD17-003":{"img":"lrig2"},

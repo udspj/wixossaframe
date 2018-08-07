@@ -15,6 +15,8 @@ import Avatar from './cardzone/Avatar';
 import Lrig from './cardzone/Lrig';
 import LifeLight from './cardzone/LifeLight';
 import Shiguni from './cardzone/Shiguni';
+import { mainCardsList, avatarCardsList } from './utils/maincards'
+import store from '../store/store'
 
 class Desk extends React.Component {
   constructor(props) {
@@ -22,6 +24,8 @@ class Desk extends React.Component {
   }
 
   componentDidMount() {
+    store.dispatch({ type: 'DECK_DRAW' })
+    console.log(store.getState())
   }
 
   render () {
