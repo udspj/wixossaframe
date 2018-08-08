@@ -11,6 +11,10 @@ const initDeck = () => {
     return deck;
 }
 
+const drawCard = () => {
+    return "wx00";
+}
+
 const initState = {
   maindeck: initDeck()
 }
@@ -20,7 +24,7 @@ const deck =  (state = initState, action) => {
     case ActionTypes.DECK_SHUFFLE:
       return { ...state, attentionBoxVisible: !state.attentionBoxVisible }
     case ActionTypes.DECK_DRAW:
-      return { ...state, drawcard: "wx00" }
+      return { ...state, drawcard: drawCard() }
     default: return state
   }
 }
