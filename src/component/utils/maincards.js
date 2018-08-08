@@ -1,15 +1,16 @@
 export const mainCardsList = {
-"WD17-009":{"img":"card4","amount":4},
-"WD17-010":{"img":"card5","amount":4},
-"WD17-011":{"img":"card6","amount":4},
-"WD17-012":{"img":"card7","amount":4},
-"WD17-013":{"img":"card8","amount":4},
-"WD17-014":{"img":"card9","amount":4},
-"WD17-015":{"img":"card10","amount":4},
-"WD17-016":{"img":"card2","amount":4},
-"WD17-017":{"img":"card3","amount":4},
-"WD17-018":{"img":"card1","amount":4}
+"WD17-009":{"img":"card4","amount":4,"type":1},
+"WD17-010":{"img":"card5","amount":4,"type":1},
+"WD17-011":{"img":"card6","amount":4,"type":1},
+"WD17-012":{"img":"card7","amount":4,"type":1},
+"WD17-013":{"img":"card8","amount":4,"type":1},
+"WD17-014":{"img":"card9","amount":4,"type":1},
+"WD17-015":{"img":"card10","amount":4,"type":1},
+"WD17-016":{"img":"card2","amount":4,"type":1},
+"WD17-017":{"img":"card3","amount":4,"type":1},
+"WD17-018":{"img":"card1","amount":4,"type":0}
 };
+// type 0魔法 1精灵
 
 export const avatarCardsList = [
 "WD17-005":{"img":"lrig0"},

@@ -7,6 +7,7 @@ import React from 'react';
 // import ReactDOM from 'react-dom';
 import slot from '../../resource/slotcard.png';
 import cardbk from '../../resource/cardbk_b.png';
+import store from '../../store/store'
 
 class Cards extends React.Component {
   constructor(props) {
@@ -37,7 +38,8 @@ class Cards extends React.Component {
         position={'1.1 '+(this.props.cardY+0.1+0.001)+' '+(this.props.deskZ-0.5)} 
         scale='0.2 0.28 1'
         rotation='90 180 0' 
-        material={{src: cardbk, side:'double', transparent:true}}>
+        material={{src: cardbk, side:'double', transparent:true}}
+        events={{click: () => store.dispatch({ type: 'DECK_DRAW' })}}>
         </Entity>
 
       </Entity>

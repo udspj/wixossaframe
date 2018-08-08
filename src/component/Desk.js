@@ -24,8 +24,8 @@ class Desk extends React.Component {
   }
 
   componentDidMount() {
-    store.dispatch({ type: 'DECK_DRAW' })
-    console.log(store.getState())
+    // store.dispatch({ type: 'DECK_DRAW' })
+    // console.log(store.getState().deck.drawcard)
   }
 
   render () {
@@ -50,6 +50,12 @@ class Desk extends React.Component {
         <Avatar cardY={cardY} deskZ={deskZ}/>
         <Energy cardY={cardY} deskZ={deskZ}/>
         <LifeLight cardY={cardY} deskZ={deskZ}/>
+
+        <Entity 
+        text={"value: "+store.getState().deck.drawcard+"; width:2; align:center;"}
+        rotation='0 0 0'
+        position={'0 15 9'}>
+        </Entity>
 
       </Entity>
     );
