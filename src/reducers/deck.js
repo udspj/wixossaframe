@@ -1,5 +1,5 @@
 import * as ActionTypes from '../actions'
-import { mainCardsList, avatarCardsList } from '../component/utils/maincards'
+import { mainCardsList } from '../component/utils/maincards'
 
 // 初始化牌组
 const initDeck = () => {
@@ -75,6 +75,14 @@ const checkZoneLimit = (zonename, zonecardlist) => {
 		return false;
 	}
 	return true;
+}
+
+// 检查当前区域是否是空
+const checkZoneEmpty = (zonecardlist) => {
+	if (zonecardlist.length < 1) {
+		return true;
+	}
+	return false;
 }
 
 // 从某个区域中移除某张牌
