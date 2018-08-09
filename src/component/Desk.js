@@ -16,7 +16,9 @@ import Lrig from './cardzone/Lrig';
 import LifeLight from './cardzone/LifeLight';
 import Shiguni from './cardzone/Shiguni';
 import { mainCardsList, avatarCardsList } from './utils/maincards'
+
 import store from '../store/store'
+import { DECK_PUT } from '../actions'
 
 class Desk extends React.Component {
   constructor(props) {
@@ -24,8 +26,8 @@ class Desk extends React.Component {
   }
 
   componentDidMount() {
-    // store.dispatch({ type: 'DECK_DRAW' })
-    // console.log(store.getState().deck.drawcard)
+    store.dispatch( DECK_PUT('wx00', 'LIFE') )
+    console.log(store.getState().deck.life)
   }
 
   render () {

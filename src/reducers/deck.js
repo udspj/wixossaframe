@@ -1,6 +1,7 @@
 import * as ActionTypes from '../actions'
 import { mainCardsList, avatarCardsList } from '../component/utils/maincards'
 
+// 初始化牌组
 const initDeck = () => {
     var deck = [];
     for (let key of Object.keys(mainCardsList)) {
@@ -11,6 +12,7 @@ const initDeck = () => {
     return washDeck(deck);
 }
 
+// 洗牌
 const washDeck = (decklist) => {
 	var arr = decklist;
 	let n = arr.length, random;
@@ -21,25 +23,73 @@ const washDeck = (decklist) => {
     return arr;
 }
 
+// 抽卡
 const drawCard = (decklist) => {
-	var card = decklist[0];
-    return card;
+    return decklist[0];
 }
 
+// 从牌组中去除抽的卡
 const drawFromDeck = (decklist) => {
 	decklist.splice(0,1);
 	return decklist;
 }
 
-const throwCard = (useddeck, cardname) => {
-	useddeck.push(cardname);
-	return useddeck;
-}
+// // 把抽的卡加入到手牌
+// const addDrawdCardToHand = (hand, cardname) => {
+// 	hand.push(cardname);
+// 	return hand;
+// }
 
+// // 在废弃区加入弃牌
+// const throwCard = (useddeck, cardname) => {
+// 	useddeck.push(cardname);
+// 	return useddeck;
+// }
+
+// 把废弃区的牌加入到主牌组
 const discardBacktoMaindeck = (useddeck, maindeck) => {
 	let newdeck = maindeck;
 	newdeck.push.apply( newdeck, useddeck );
 	return washDeck(newdeck);
+}
+
+// 检查牌组所在区域上限（手牌10，能量10，生命10，精灵区各1）
+const checkZoneLimit = (zonename, zonecardlist) => {
+	if( (zonename == 'life') && (zonecardlist.length >= 10) ){
+		console.log("生命护甲上限");
+		return false;
+	}else if( (zonename == 'hand') && (zonecardlist.length >= 10) ){
+		console.log("手牌上限，可以先弃一些牌再抽牌");
+		return false;
+	}else if( (zonename == 'energy') && (zonecardlist.length >= 10) ){
+		console.log("能量区上限");
+		return false;
+	}else if( (zonename == 'sgnleft') && (zonecardlist.length >= 1) ){
+		console.log("每个精灵区只能放一只精灵");
+		return false;
+	}else if( (zonename == 'sgncenter') && (zonecardlist.length >= 1) ){
+		console.log("每个精灵区只能放一只精灵");
+		return false;
+	}else if( (zonename == 'sgnright') && (zonecardlist.length >= 1) ){
+		console.log("每个精灵区只能放一只精灵");
+		return false;
+	}
+	return true;
+}
+
+// 从某个区域中移除某张牌
+const removeCardFromZone = (cardlist, cardname) => {
+	var index = cardlist.indexOf(cardname);
+	if (index > -1) {
+		cardlist.splice(index, 1);
+	}
+	return cardlist;
+}
+
+// 把某张牌加入到某个区域中
+const addCardToZone = (cardlist, cardname) => {
+	cardlist.push(cardname);
+	return cardlist;
 }
 
 const initState = {
@@ -49,18 +99,27 @@ const initState = {
 	hand: [],
 	life: [],
 	energy: [],
-	sgnleft: "",
-	sgncenter: "",
-	sgnright: ""
+	sgnleft: [],
+	sgncenter: [],
+	sgnright: []
 }
 
 const deck =  (state = initState, action) => {
 	console.log(action)
 	switch (action.type) {
 		case ActionTypes.DECK_SHUFFLE:
-			return { ...state, maindeck: washDeck(state.maindeck) }
+			return { ...state, maindeck: discardBacktoMaindeck(state.useddeck, state.maindeck) }
 		case ActionTypes.DECK_DRAW:
-			return { ...state, drawcard: drawCard(state.maindeck), maindeck: drawFromDeck(state.maindeck) }
+			if(state.maindeck.length < 1) {
+				discardBacktoMaindeck(state.useddeck, state.maindeck)
+			}
+			if(!checkZoneLimit("hand", state.hand)) {
+				return state
+			}
+			const card = drawCard(state.maindeck)
+			return { ...state , drawcard: card, 
+								hand: addCardToZone(state.hand, card),
+								maindeck: drawFromDeck(state.maindeck) }
 		case "DECK_THROW_FROM_HAND":
 			return { ...state }
 		case "DECK_THROW_FROM_LIFE":
@@ -74,15 +133,35 @@ const deck =  (state = initState, action) => {
 		case "DECK_THROW_FROM_SGNRIGHT":
 			return { ...state }
 		case "DECK_PUT_TO_LIFE":
-			return { ...state }
+			if(!checkZoneLimit("life", state.life)) {
+				return state
+			}
+			return { ...state , life: addCardToZone(life, action.cardname),
+							 	hand: removeCardFromZone(hand, action.cardname)}
 		case "DECK_PUT_TO_ENERGY":
-			return { ...state }
+			if(!checkZoneLimit("energy", state.energy)) {
+				return state
+			}
+			return { ...state , energy: addCardToZone(energy, action.cardname),
+							 	hand: removeCardFromZone(hand, action.cardname)}
 		case "DECK_PUT_TO_SGNLEFT":
-			return { ...state }
+			if(!checkZoneLimit("sgnleft", state.sgnleft)) {
+				return state
+			}
+			return { ...state , sgnleft: addCardToZone(sgnleft, action.cardname),
+							 	hand: removeCardFromZone(hand, action.cardname)}
 		case "DECK_PUT_TO_SGNCENTER":
-			return { ...state }
+			if(!checkZoneLimit("sgncenter", state.sgncenter)) {
+				return state
+			}
+			return { ...state , sgncenter: addCardToZone(sgncenter, action.cardname),
+							 	hand: removeCardFromZone(hand, action.cardname)}
 		case "DECK_PUT_TO_SGNRIGHT":
-			return { ...state }
+			if(!checkZoneLimit("sgnright", state.sgnright)) {
+				return state
+			}
+			return { ...state , sgnright: addCardToZone(sgnright, action.cardname),
+							 	hand: removeCardFromZone(hand, action.cardname)}
 		default: return state
 	}
 }
