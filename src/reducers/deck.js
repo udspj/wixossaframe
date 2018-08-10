@@ -129,46 +129,70 @@ const deck =  (state = initState, action) => {
 								hand: addCardToZone(state.hand, card),
 								maindeck: drawFromDeck(state.maindeck) }
 		case "DECK_THROW_FROM_HAND":
-			return { ...state }
+			if(!checkZoneEmpty(state.hand)) {
+				return state
+			}
+			return { ...state , useddeck: addCardToZone(state.useddeck, action.cardname),
+							 	hand: removeCardFromZone(state.hand, action.cardname)}
 		case "DECK_THROW_FROM_LIFE":
-			return { ...state }
+			if(!checkZoneEmpty(state.life)) {
+				return state
+			}
+			return { ...state , useddeck: addCardToZone(state.useddeck, action.cardname),
+							 	life: removeCardFromZone(state.life, action.cardname)}
 		case "DECK_THROW_FROM_ENERGY":
-			return { ...state }
+			if(!checkZoneEmpty(state.energy)) {
+				return state
+			}
+			return { ...state , useddeck: addCardToZone(state.useddeck, action.cardname),
+							 	energy: removeCardFromZone(state.energy, action.cardname)}
 		case "DECK_THROW_FROM_SGNLEFT":
-			return { ...state }
+			if(!checkZoneEmpty(state.sgnleft)) {
+				return state
+			}
+			return { ...state , useddeck: addCardToZone(state.useddeck, action.cardname),
+							 	sgnleft: removeCardFromZone(state.sgnleft, action.cardname)}
 		case "DECK_THROW_FROM_SGNCENTER":
-			return { ...state }
+			if(!checkZoneEmpty(state.sgncenter)) {
+				return state
+			}
+			return { ...state , useddeck: addCardToZone(state.useddeck, action.cardname),
+							 	sgncenter: removeCardFromZone(state.sgncenter, action.cardname)}
 		case "DECK_THROW_FROM_SGNRIGHT":
-			return { ...state }
+			if(!checkZoneEmpty(state.sgnright)) {
+				return state
+			}
+			return { ...state , useddeck: addCardToZone(state.useddeck, action.cardname),
+							 	sgnright: removeCardFromZone(state.sgnright, action.cardname)}
 		case "DECK_PUT_TO_LIFE":
 			if(!checkZoneLimit("life", state.life)) {
 				return state
 			}
-			return { ...state , life: addCardToZone(life, action.cardname),
+			return { ...state , life: addCardToZone(state.life, action.cardname),
 							 	hand: removeCardFromZone(hand, action.cardname)}
 		case "DECK_PUT_TO_ENERGY":
 			if(!checkZoneLimit("energy", state.energy)) {
 				return state
 			}
-			return { ...state , energy: addCardToZone(energy, action.cardname),
+			return { ...state , energy: addCardToZone(state.energy, action.cardname),
 							 	hand: removeCardFromZone(hand, action.cardname)}
 		case "DECK_PUT_TO_SGNLEFT":
 			if(!checkZoneLimit("sgnleft", state.sgnleft)) {
 				return state
 			}
-			return { ...state , sgnleft: addCardToZone(sgnleft, action.cardname),
+			return { ...state , sgnleft: addCardToZone(state.sgnleft, action.cardname),
 							 	hand: removeCardFromZone(hand, action.cardname)}
 		case "DECK_PUT_TO_SGNCENTER":
 			if(!checkZoneLimit("sgncenter", state.sgncenter)) {
 				return state
 			}
-			return { ...state , sgncenter: addCardToZone(sgncenter, action.cardname),
+			return { ...state , sgncenter: addCardToZone(state.sgncenter, action.cardname),
 							 	hand: removeCardFromZone(hand, action.cardname)}
 		case "DECK_PUT_TO_SGNRIGHT":
 			if(!checkZoneLimit("sgnright", state.sgnright)) {
 				return state
 			}
-			return { ...state , sgnright: addCardToZone(sgnright, action.cardname),
+			return { ...state , sgnright: addCardToZone(state.sgnright, action.cardname),
 							 	hand: removeCardFromZone(hand, action.cardname)}
 		default: return state
 	}
