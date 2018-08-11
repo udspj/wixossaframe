@@ -106,7 +106,7 @@ const initState = {
 	useddeck: [],
 	hand: ["WD17-009","WD17-009","WD17-009","WD17-009","WD17-009","WD17-009","WD17-009","WD17-009","WD17-018"],
 	life: [],
-	energy: [],
+	energy: ["WD17-009","WD17-009","WD17-009","WD17-018"],
 	sgnleft: [],
 	sgncenter: [],
 	sgnright: []
@@ -134,12 +134,12 @@ const deck =  (state = initState, action) => {
 			}
 			return { ...state , useddeck: addCardToZone(state.useddeck, action.cardname),
 							 	hand: removeCardFromZone(state.hand, action.cardname)}
-		case "DECK_THROW_FROM_LIFE":
-			if(!checkZoneEmpty(state.life)) {
-				return state
-			}
-			return { ...state , useddeck: addCardToZone(state.useddeck, action.cardname),
-							 	life: removeCardFromZone(state.life, action.cardname)}
+		// case "DECK_THROW_FROM_LIFE":
+		// 	if(!checkZoneEmpty(state.life)) {
+		// 		return state
+		// 	}
+		// 	return { ...state , useddeck: addCardToZone(state.useddeck, action.cardname),
+		// 					 	life: removeCardFromZone(state.life, action.cardname)}
 		case "DECK_THROW_FROM_ENERGY":
 			if(!checkZoneEmpty(state.energy)) {
 				return state
@@ -164,12 +164,12 @@ const deck =  (state = initState, action) => {
 			}
 			return { ...state , useddeck: addCardToZone(state.useddeck, action.cardname),
 							 	sgnright: removeCardFromZone(state.sgnright, action.cardname)}
-		case "DECK_PUT_TO_LIFE":
-			if(!checkZoneLimit("life", state.life)) {
-				return state
-			}
-			return { ...state , life: addCardToZone(state.life, action.cardname),
-							 	hand: removeCardFromZone(state.hand, action.cardname)}
+		// case "DECK_PUT_TO_LIFE":
+		// 	if(!checkZoneLimit("life", state.life)) {
+		// 		return state
+		// 	}
+		// 	return { ...state , life: addCardToZone(state.life, action.cardname),
+		// 					 	hand: removeCardFromZone(state.hand, action.cardname)}
 		case "DECK_PUT_TO_ENERGY":
 			if(!checkZoneLimit("energy", state.energy)) {
 				return state
