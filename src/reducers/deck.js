@@ -104,16 +104,20 @@ const initState = {
 	maindeck: initDeck(),
 	drawcard: "",
 	useddeck: [],
-	hand: ["WD17-009","WD17-009","WD17-009","WD17-009","WD17-009","WD17-009","WD17-009","WD17-009","WD17-018"],
+	hand: ["WD17-009","WD17-014","WD17-010","WD17-009","WD17-013","WD17-014","WD17-017","WD17-018","WD17-018"],
 	life: [],
-	energy: ["WD17-009","WD17-009","WD17-009","WD17-018"],
+	energy: [],
 	sgnleft: [],
 	sgncenter: [],
-	sgnright: []
+	sgnright: [],
+	handcardselected: false
 }
 
 const deck =  (state = initState, action) => {
-	console.log(action)
+	if(state.handcardselected && action.type !== 'HAND_SELECTED') {
+		return state
+	}
+	// console.log(action)
 	switch (action.type) {
 		case ActionTypes.DECK_SHUFFLE:
 			return { ...state, maindeck: discardBacktoMaindeck(state.useddeck, state.maindeck) }
@@ -128,12 +132,6 @@ const deck =  (state = initState, action) => {
 			return { ...state , drawcard: card, 
 								hand: addCardToZone(state.hand, card),
 								maindeck: drawFromDeck(state.maindeck) }
-		case "DECK_THROW_FROM_HAND":
-			if(!checkZoneEmpty(state.hand)) {
-				return state
-			}
-			return { ...state , useddeck: addCardToZone(state.useddeck, action.cardname),
-							 	hand: removeCardFromZone(state.hand, action.cardname)}
 		// case "DECK_THROW_FROM_LIFE":
 		// 	if(!checkZoneEmpty(state.life)) {
 		// 		return state
@@ -164,6 +162,8 @@ const deck =  (state = initState, action) => {
 			}
 			return { ...state , useddeck: addCardToZone(state.useddeck, action.cardname),
 							 	sgnright: removeCardFromZone(state.sgnright, action.cardname)}
+		case "HAND_SELECTED":
+			return { ...state, handcardselected:action.isselected }
 		// case "DECK_PUT_TO_LIFE":
 		// 	if(!checkZoneLimit("life", state.life)) {
 		// 		return state
@@ -193,6 +193,12 @@ const deck =  (state = initState, action) => {
 				return state
 			}
 			return { ...state , sgnright: addCardToZone(state.sgnright, action.cardname),
+							 	hand: removeCardFromZone(state.hand, action.cardname)}
+		case "DECK_PUT_TO_USEDDECK":
+			if(!checkZoneEmpty(state.hand)) {
+				return state
+			}
+			return { ...state , useddeck: addCardToZone(state.useddeck, action.cardname),
 							 	hand: removeCardFromZone(state.hand, action.cardname)}
 		default: return state
 	}

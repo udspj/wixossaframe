@@ -10,3 +10,7 @@ export const DECK_PUT = (cardname, tozone) => ({
     type: 'DECK_PUT_TO_'+tozone,
     cardname
 })
+export const HAND_SELECTED = (isselected) => ({
+    type: 'HAND_SELECTED',
+    isselected
+})

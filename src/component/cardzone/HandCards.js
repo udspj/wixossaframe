@@ -10,17 +10,26 @@ import puthere from '../../resource/puthere.png';
 
 import store from '../../store/store';
 import { mainCardsList } from '../utils/maincards';
+import { HAND_SELECTED } from '../../actions';
 
 class HandCards extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tamavisible: 'true'
+      tamavisible: 'false',
+      cardinfo:{}
     };
   }
 
   handleClick(cardinfo) {
-    console.log(cardinfo)
+    this.setState({ cardinfo });
+    if(this.state.tamavisible === 'true') {
+      this.setState({ tamavisible:'false' });
+      store.dispatch( HAND_SELECTED(false) );
+    }else{
+      this.setState({ tamavisible:'true' });
+      store.dispatch( HAND_SELECTED(true) );
+    }
   }
 
   handlePutClick(zoneinfo) {
@@ -31,12 +40,12 @@ class HandCards extends React.Component {
     const cardy = this.props.cardY;
     const cardz = this.props.deskZ;
     const list = mainCardsList;
-    const putlist = [{'zone':'energy','x':-1,'y':cardy,'z':cardz-0.5,'ry':180},
-                     {'zone':'sgnleft','x':-0.4,'y':cardy,'z':cardz-0.15,'ry':180},
-                     {'zone':'sgncenter','x':-0,'y':cardy,'z':cardz-0.5,'ry':180},
-                     {'zone':'sgnright','x':0.4,'y':cardy,'z':cardz-0.15,'ry':180},
+    const putlist = [{'zone':'ENERGY','x':-1,'y':cardy,'z':cardz-0.5,'ry':180},
+                     {'zone':'SGNLEFT','x':-0.4,'y':cardy,'z':cardz-0.15,'ry':180},
+                     {'zone':'SGNCENTER','x':-0,'y':cardy,'z':cardz-0.5,'ry':180},
+                     {'zone':'SGNRIGHT','x':0.4,'y':cardy,'z':cardz-0.15,'ry':180},
                      // {'zone':'life','x':-0.5,'y':cardy,'z':cardz+0.4,'ry':180},
-                     {'zone':'useddeck','x':1.2,'y':cardy,'z':cardz+0.5,'ry':90}];
+                     {'zone':'USEDDECK','x':1.2,'y':cardy,'z':cardz+0.5,'ry':90}];
     return (
       <Entity>
 
@@ -78,5 +87,12 @@ class HandCards extends React.Component {
     );
   }
 }
+
+        // <Entity geometry={{primitive: 'plane'}}
+        // material={{color: 'red', side:'double', opacity:'0'}}
+        // position={{x: 0, y: 14.2, z: cardz}}
+        // scale='3 1.8 0.1'
+        // rotation='90 0 0'>
+        // </Entity>
 
 export default HandCards;
