@@ -139,25 +139,25 @@ const deck =  (state = initState, action) => {
 		// 	return { ...state , useddeck: addCardToZone(state.useddeck, action.cardname),
 		// 					 	life: removeCardFromZone(state.life, action.cardname)}
 		case "DECK_THROW_FROM_ENERGY":
-			if(!checkZoneEmpty(state.energy)) {
+			if(checkZoneEmpty(state.energy)) {
 				return state
 			}
 			return { ...state , useddeck: addCardToZone(state.useddeck, action.cardname),
 							 	energy: removeCardFromZone(state.energy, action.cardname)}
 		case "DECK_THROW_FROM_SGNLEFT":
-			if(!checkZoneEmpty(state.sgnleft)) {
+			if(checkZoneEmpty(state.sgnleft)) {
 				return state
 			}
 			return { ...state , useddeck: addCardToZone(state.useddeck, action.cardname),
 							 	sgnleft: removeCardFromZone(state.sgnleft, action.cardname)}
 		case "DECK_THROW_FROM_SGNCENTER":
-			if(!checkZoneEmpty(state.sgncenter)) {
+			if(checkZoneEmpty(state.sgncenter)) {
 				return state
 			}
 			return { ...state , useddeck: addCardToZone(state.useddeck, action.cardname),
 							 	sgncenter: removeCardFromZone(state.sgncenter, action.cardname)}
 		case "DECK_THROW_FROM_SGNRIGHT":
-			if(!checkZoneEmpty(state.sgnright)) {
+			if(checkZoneEmpty(state.sgnright)) {
 				return state
 			}
 			return { ...state , useddeck: addCardToZone(state.useddeck, action.cardname),
@@ -195,9 +195,9 @@ const deck =  (state = initState, action) => {
 			return { ...state , sgnright: addCardToZone(state.sgnright, action.cardname),
 							 	hand: removeCardFromZone(state.hand, action.cardname)}
 		case "DECK_PUT_TO_USEDDECK":
-			if(!checkZoneEmpty(state.hand)) {
-				return state
-			}
+			// if(!checkZoneEmpty(state.hand)) {
+			// 	return state
+			// }
 			return { ...state , useddeck: addCardToZone(state.useddeck, action.cardname),
 							 	hand: removeCardFromZone(state.hand, action.cardname)}
 		default: return state

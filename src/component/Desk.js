@@ -53,15 +53,15 @@ class Desk extends React.Component {
         <Energy cardY={cardY} deskZ={deskZ}/>
         <LifeLight cardY={cardY} deskZ={deskZ}/>
 
-        <Entity 
-        text={"value: "+store.getState().deck.drawcard+"; width:2; align:center;"}
-        rotation='0 0 0'
-        position={'0 15 9'}>
-        </Entity>
-
       </Entity>
     );
   }
 }
+
+        // <Entity 
+        // text={"value: "+store.getState().deck.drawcard+"; width:2; align:center;"}
+        // rotation='0 0 0'
+        // position={'0 15 9'}>
+        // </Entity>
 
 export default Desk;

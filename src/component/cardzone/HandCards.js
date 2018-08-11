@@ -33,6 +33,11 @@ class HandCards extends React.Component {
   }
 
   handlePutClick(zoneinfo) {
+    const list = mainCardsList;
+    if(list[this.state.cardname]['type'] === 0 && zoneinfo['zone'].indexOf("SGN") != -1) {
+      console.log("魔法卡无法放在精灵区域");
+      return;
+    }
     this.setState({ tamavisible:'false' });
     store.dispatch( HAND_SELECTED(false) );
     store.dispatch( DECK_PUT(this.state.cardname,zoneinfo['zone']) );
