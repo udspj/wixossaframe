@@ -117,7 +117,7 @@ const deck =  (state = initState, action) => {
 	if(state.handcardselected && action.type !== 'HAND_SELECTED') {
 		return state
 	}
-	// console.log(action)
+	console.log(action)
 	switch (action.type) {
 		case ActionTypes.DECK_SHUFFLE:
 			return { ...state, maindeck: discardBacktoMaindeck(state.useddeck, state.maindeck) }

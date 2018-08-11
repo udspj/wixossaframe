@@ -10,19 +10,19 @@ import puthere from '../../resource/puthere.png';
 
 import store from '../../store/store';
 import { mainCardsList } from '../utils/maincards';
-import { HAND_SELECTED } from '../../actions';
+import { HAND_SELECTED, DECK_PUT } from '../../actions';
 
 class HandCards extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       tamavisible: 'false',
-      cardinfo:{}
+      cardname:''
     };
   }
 
-  handleClick(cardinfo) {
-    this.setState({ cardinfo });
+  handleClick(cardname) {
+    this.setState({ cardname });
     if(this.state.tamavisible === 'true') {
       this.setState({ tamavisible:'false' });
       store.dispatch( HAND_SELECTED(false) );
@@ -33,7 +33,9 @@ class HandCards extends React.Component {
   }
 
   handlePutClick(zoneinfo) {
-
+    this.setState({ tamavisible:'false' });
+    store.dispatch( HAND_SELECTED(false) );
+    store.dispatch( DECK_PUT(this.state.cardname,zoneinfo['zone']) );
   }
 
   render () {
@@ -64,7 +66,7 @@ class HandCards extends React.Component {
             scale='0.2 0.28 1'
             rotation='90 180 0' 
             material={{src: require('../../resource/'+list[result]['img']+'.png'), side:'double', transparent:true}}
-            events={{click: () => this.handleClick(list[result])}}>
+            events={{click: () => this.handleClick(result)}}>
             </Entity>
           )
         }.bind(this))}
