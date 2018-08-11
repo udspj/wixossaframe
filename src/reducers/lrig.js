@@ -18,7 +18,6 @@ const initState = {
 const lrig =  (state = initState, action) => {
 	console.log(action)
 	switch (action.type) {
-			return { ...state }
 		case "DECK_THROW_FROM_SGNRIGHT":
 			return { ...state }
 		default: return state

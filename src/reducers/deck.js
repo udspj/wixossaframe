@@ -53,12 +53,12 @@ const discardBacktoMaindeck = (useddeck, maindeck) => {
 	return washDeck(newdeck);
 }
 
-// 检查牌组所在区域上限（手牌10，能量10，生命10，精灵区各1）
+// 检查牌组所在区域上限（手牌9，能量10，生命10，精灵区各1）
 const checkZoneLimit = (zonename, zonecardlist) => {
 	if( (zonename == 'life') && (zonecardlist.length >= 10) ){
 		console.log("生命护甲上限");
 		return false;
-	}else if( (zonename == 'hand') && (zonecardlist.length >= 10) ){
+	}else if( (zonename == 'hand') && (zonecardlist.length >= 9) ){
 		console.log("手牌上限，可以先弃一些牌再抽牌");
 		return false;
 	}else if( (zonename == 'energy') && (zonecardlist.length >= 10) ){
@@ -169,31 +169,31 @@ const deck =  (state = initState, action) => {
 				return state
 			}
 			return { ...state , life: addCardToZone(state.life, action.cardname),
-							 	hand: removeCardFromZone(hand, action.cardname)}
+							 	hand: removeCardFromZone(state.hand, action.cardname)}
 		case "DECK_PUT_TO_ENERGY":
 			if(!checkZoneLimit("energy", state.energy)) {
 				return state
 			}
 			return { ...state , energy: addCardToZone(state.energy, action.cardname),
-							 	hand: removeCardFromZone(hand, action.cardname)}
+							 	hand: removeCardFromZone(state.hand, action.cardname)}
 		case "DECK_PUT_TO_SGNLEFT":
 			if(!checkZoneLimit("sgnleft", state.sgnleft)) {
 				return state
 			}
 			return { ...state , sgnleft: addCardToZone(state.sgnleft, action.cardname),
-							 	hand: removeCardFromZone(hand, action.cardname)}
+							 	hand: removeCardFromZone(state.hand, action.cardname)}
 		case "DECK_PUT_TO_SGNCENTER":
 			if(!checkZoneLimit("sgncenter", state.sgncenter)) {
 				return state
 			}
 			return { ...state , sgncenter: addCardToZone(state.sgncenter, action.cardname),
-							 	hand: removeCardFromZone(hand, action.cardname)}
+							 	hand: removeCardFromZone(state.hand, action.cardname)}
 		case "DECK_PUT_TO_SGNRIGHT":
 			if(!checkZoneLimit("sgnright", state.sgnright)) {
 				return state
 			}
 			return { ...state , sgnright: addCardToZone(state.sgnright, action.cardname),
-							 	hand: removeCardFromZone(hand, action.cardname)}
+							 	hand: removeCardFromZone(state.hand, action.cardname)}
 		default: return state
 	}
 }
