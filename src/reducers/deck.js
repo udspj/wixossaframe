@@ -104,7 +104,7 @@ const initState = {
 	maindeck: initDeck(),
 	drawcard: "",
 	useddeck: [],
-	hand: [],
+	hand: ["WD17-009","WD17-009","WD17-009","WD17-009","WD17-009","WD17-009","WD17-009","WD17-009","WD17-018"],
 	life: [],
 	energy: [],
 	sgnleft: [],
