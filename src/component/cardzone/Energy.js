@@ -6,14 +6,32 @@ import {Entity} from 'aframe-react';
 import React from 'react';
 // import ReactDOM from 'react-dom';
 import slot from '../../resource/slotenergy.png';
+import puthere from '../../resource/puthere.png';
 
 import store from '../../store/store';
 import { mainCardsList } from '../utils/maincards';
+import { ENERGY_SELECTED, DECK_THROW } from '../../actions';
 
 class Energy extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cardname:''
+    };
+  }
 
-  handleClick(cardinfo) {
-    console.log(cardinfo)
+  handleClick(cardname) {
+    this.setState({ cardname });
+    if(store.getState().deck.energyselected) {
+      store.dispatch( ENERGY_SELECTED(false) );
+    }else{
+      store.dispatch( ENERGY_SELECTED(true) );
+    }
+  }
+
+  handlePutClick() {
+    store.dispatch( ENERGY_SELECTED(false) );
+    store.dispatch( DECK_THROW(this.state.cardname,'ENERGY') );
   }
 
   render () {
@@ -38,10 +56,19 @@ class Energy extends React.Component {
             scale='0.2 0.28 1'
             rotation='90 -90 0' 
             material={{src: require('../../resource/'+list[result]['img']+'.png'), side:'double', transparent:true}}
-            events={{click: () => this.handleClick(list[result])}}>
+            events={{click: () => this.handleClick(result)}}>
             </Entity>
           )
         }.bind(this))}
+
+        <Entity geometry={{primitive: 'plane'}} 
+        position={1.2+' '+(cardy+0.4)+' '+(cardz+0.5)} 
+        scale='0.2 0.354 1'
+        rotation={'0 90 0'}
+        material={{src: puthere, side:'double', transparent:true}}
+        visible={store.getState().deck.energyselected}
+        events={{click: () => this.handlePutClick()}}>
+        </Entity>
 
       </Entity>
     );

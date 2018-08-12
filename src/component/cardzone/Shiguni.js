@@ -22,8 +22,6 @@ class Shiguni extends React.Component {
   }
 
   handleClick(cardname,zone) {
-    console.log(cardname)
-    console.log(zone)
     this.setState({ cardname, zone });
     if(store.getState().deck.sgnselected) {
       store.dispatch( SGN_SELECTED(false) );
