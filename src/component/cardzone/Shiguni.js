@@ -22,7 +22,7 @@ class Shiguni extends React.Component {
       return <Entity geometry={{primitive: 'plane'}} 
             position={'-0.5 '+(this.props.cardY+0.001)+' '+(this.props.deskZ-0.2)} 
             scale='0.22 0.3 1'
-            rotation='90 0 0' 
+            rotation='90 180 0' 
             material={{src: require('../../resource/'+list[cardname]['img']+'.png'), side:'double', transparent:true}}
             events={{click: () => this.handleClick()}}>
             </Entity>
@@ -36,7 +36,7 @@ class Shiguni extends React.Component {
       return <Entity geometry={{primitive: 'plane'}} 
             position={'0 '+this.props.cardY+' '+(this.props.deskZ-0.5)} 
             scale='0.22 0.3 1'
-            rotation='90 0 0' 
+            rotation='90 180 0' 
             material={{src: require('../../resource/'+list[cardname]['img']+'.png'), side:'double', transparent:true}}
             events={{click: () => this.handleClick()}}>
             </Entity>
@@ -50,7 +50,7 @@ class Shiguni extends React.Component {
       return <Entity geometry={{primitive: 'plane'}} 
             position={'0.5 '+this.props.cardY+' '+(this.props.deskZ-0.2)} 
             scale='0.22 0.3 1'
-            rotation='90 0 0' 
+            rotation='90 180 0' 
             material={{src: require('../../resource/'+list[cardname]['img']+'.png'), side:'double', transparent:true}}
             events={{click: () => this.handleClick()}}>
             </Entity>
