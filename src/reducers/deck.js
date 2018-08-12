@@ -107,13 +107,21 @@ const initState = {
 	hand: ["WD17-009","WD17-014","WD17-010","WD17-009","WD17-013","WD17-014","WD17-017","WD17-018","WD17-018"],
 	life: [],
 	energy: [],
-	sgnleft: [],
-	sgncenter: [],
-	sgnright: [],
-	handcardselected: false
+	sgnleft: ["WD17-009"],
+	sgncenter: ["WD17-009"],
+	sgnright: ["WD17-009"],
+	handcardselected: false,
+	energyselected: false,
+	sgnselected: false
 }
 
 const deck =  (state = initState, action) => {
+	if(state.energyselected && action.type !== 'ENERGY_SELECTED') {
+		return state
+	}
+	if(state.sgnselected && action.type !== 'SGN_SELECTED') {
+		return state
+	}
 	if(state.handcardselected && action.type !== 'HAND_SELECTED') {
 		return state
 	}
@@ -164,6 +172,10 @@ const deck =  (state = initState, action) => {
 							 	sgnright: removeCardFromZone(state.sgnright, action.cardname)}
 		case "HAND_SELECTED":
 			return { ...state, handcardselected:action.isselected }
+		case "ENERGY_SELECTED":
+			return { ...state, energyselected:action.isselected }
+		case "SGN_SELECTED":
+			return { ...state, sgnselected:action.isselected }
 		// case "DECK_PUT_TO_LIFE":
 		// 	if(!checkZoneLimit("life", state.life)) {
 		// 		return state

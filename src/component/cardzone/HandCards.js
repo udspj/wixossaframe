@@ -16,18 +16,15 @@ class HandCards extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tamavisible: 'false',
       cardname:''
     };
   }
 
   handleClick(cardname) {
     this.setState({ cardname });
-    if(this.state.tamavisible === 'true') {
-      this.setState({ tamavisible:'false' });
+    if(store.getState().deck.handcardselected) {
       store.dispatch( HAND_SELECTED(false) );
     }else{
-      this.setState({ tamavisible:'true' });
       store.dispatch( HAND_SELECTED(true) );
     }
   }
@@ -38,7 +35,6 @@ class HandCards extends React.Component {
       console.log("魔法卡无法放在精灵区域");
       return;
     }
-    this.setState({ tamavisible:'false' });
     store.dispatch( HAND_SELECTED(false) );
     store.dispatch( DECK_PUT(this.state.cardname,zoneinfo['zone']) );
   }
@@ -84,7 +80,7 @@ class HandCards extends React.Component {
             scale='0.2 0.354 1'
             rotation={'0 '+result.ry+' 0'}
             material={{src: puthere, side:'double', transparent:true}}
-            visible={this.state.tamavisible}
+            visible={store.getState().deck.handcardselected}
             events={{click: () => this.handlePutClick(putlist[reactid])}}>
             </Entity>
           )
