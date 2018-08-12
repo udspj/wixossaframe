@@ -21,13 +21,6 @@ class Lrig extends React.Component {
   }
 
   handlePutClick() {
-    // const list = mainCardsList;
-    // if(list[this.state.cardname]['type'] === 0 && zoneinfo['zone'].indexOf("SGN") != -1) {
-    //   console.log("魔法卡无法放在精灵区域");
-    //   return;
-    // }
-    // store.dispatch( HAND_SELECTED(false) );
-    // store.dispatch( DECK_PUT(this.state.cardname,zoneinfo['zone']) );
     store.dispatch( {type: 'LRIG_GROW'} );
   }
 
@@ -52,15 +45,6 @@ class Lrig extends React.Component {
         scale='0.22 0.3 1'
         rotation='90 180 0' 
         material={{src: require('../../resource/'+list[name]['img']+'.png'), side:'double', transparent:true}}
-        events={{click: () => this.handlePutClick()}}>
-        </Entity>
-
-        <Entity geometry={{primitive: 'plane'}} 
-        position={0.8+' '+(cardy+0.4)+' '+(cardz)} 
-        scale='0.2 0.354 1'
-        rotation={'0 180 0'}
-        material={{src: puthere, side:'double', transparent:true}}
-        visible={true}
         events={{click: () => this.handlePutClick()}}>
         </Entity>
 

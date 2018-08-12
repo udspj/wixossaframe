@@ -17,8 +17,8 @@ import LifeLight from './cardzone/LifeLight';
 import Shiguni from './cardzone/Shiguni';
 // import { mainCardsList, avatarCardsList } from './utils/maincards';
 
-import store from '../store/store';
-import { DECK_PUT } from '../actions';
+// import store from '../store/store';
+// import { DECK_PUT } from '../actions';
 
 class Desk extends React.Component {
   // constructor(props) {
