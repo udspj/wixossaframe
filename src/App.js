@@ -43,7 +43,7 @@ class App extends React.Component {
         </Entity>
         <Desk texture="#deskTexture"/>
         <Character center={{x: 0, y: 14, z: 10.2}}/>
-        <Coins center={{x: 0, y: 15, z: 11}} amount={3}/>
+        <Coins center={{x: 0, y: 15, z: 11}} amount={0}/>
         <About />
 
         <Entity primitive="a-plane" src="#groundTexture" rotation="-90 0 0" height="100" width="100"/>

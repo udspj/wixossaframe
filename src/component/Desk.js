@@ -15,20 +15,20 @@ import Avatar from './cardzone/Avatar';
 import Lrig from './cardzone/Lrig';
 import LifeLight from './cardzone/LifeLight';
 import Shiguni from './cardzone/Shiguni';
-import { mainCardsList, avatarCardsList } from './utils/maincards';
+// import { mainCardsList, avatarCardsList } from './utils/maincards';
 
 import store from '../store/store';
 import { DECK_PUT } from '../actions';
 
 class Desk extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
-  componentDidMount() {
-    store.dispatch( DECK_PUT('wx00', 'LIFE') )
-    console.log(store.getState().deck.life)
-  }
+  // componentDidMount() {
+  //   store.dispatch( DECK_PUT('wx00', 'LIFE') )
+  //   console.log(store.getState().deck.life)
+  // }
 
   render () {
     const cardY = 14.1;
