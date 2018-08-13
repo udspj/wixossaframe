@@ -106,7 +106,7 @@ const initState = {
 	useddeck: [],
 	hand: ["WD17-009","WD17-014","WD17-010","WD17-009","WD17-013","WD17-014","WD17-017","WD17-018","WD17-018"],
 	life: [],
-	energy: ["WD17-009","WD17-013","WD17-014","WD17-017","WD17-018"],
+	energy: [],
 	sgnleft: [],
 	sgncenter: [],
 	sgnright: [],

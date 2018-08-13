@@ -27,13 +27,13 @@ class Character extends React.Component {
     const center = this.props.center;
     return (
       <Entity>
-
-        <Entity geometry={{primitive: 'plane'}} position={center.x+" "+center.y+" "+(0.005+center.z)} scale='1 2.57 1' rotation="0 0 0" material={{src: require('../resource/suzukobk.png'), side:'double', transparent:true}}></Entity>
         <Entity geometry={{primitive: 'plane'}} position={center.x+" "+center.y+" "+(-0.005+center.z)} scale='1 2.57 1' rotation="0 0 0" material={{src: require('../resource/suzuko.png'), side:'double', transparent:true}}></Entity>
 
       </Entity>
     );
   }
 }
+
+        // <Entity geometry={{primitive: 'plane'}} position={center.x+" "+center.y+" "+(0.005+center.z)} scale='1 2.57 1' rotation="0 0 0" material={{src: require('../resource/suzukobk.png'), side:'double', transparent:true}}></Entity>
 
 export default Character;
