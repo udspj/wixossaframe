@@ -20,5 +20,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "homepage" : "http://localhost/wixoss/"
+  "homepage" : "http://udspj.github.io/wixoss/"
 }

@@ -57,5 +57,6 @@ class App extends React.Component {
     );
   }
 }
+        // <a-entity daydream-controls></a-entity>
 
 export default App;
