@@ -7,6 +7,7 @@ import React from 'react';
 // import ReactDOM from 'react-dom';
 import slot from '../../resource/slotcard.png';
 import puthere from '../../resource/puthere.png';
+import grow from '../../resource/lrig_grow.png';
 
 import store from '../../store/store';
 import { avatarCardsList } from '../utils/maincards';
@@ -40,17 +41,40 @@ class Lrig extends React.Component {
         material={{src: slot, side:'double', transparent:true}}>
         </Entity>
 
-        <Entity geometry={{primitive: 'plane'}} 
+        <Entity geometry={{primitive: 'plane'}}  event-proxy="emit: animationRestart"
         position={'0 '+(cardy+0.001)+' '+cardz} 
         scale='0.22 0.3 1'
         rotation='90 180 0' 
-        material={{src: require('../../resource/'+list[name]['img']+'.png'), side:'double', transparent:true}}
+        material={{src: require('../../resource/'+list[name]['img']+'.png'), side:'double', transparent:true}}>
+        </Entity>
+
+        <Entity geometry={{primitive: 'plane'}}
+        material={{src: grow, side:'double', transparent:true}}
+        position={'0 '+(cardy+0.001)+' '+cardz} 
+        scale='0.22 0.3 1'
+        rotation='90 180 0'>
+        </Entity>
+
+        <Entity>
+        <Entity geometry={{primitive: 'plane'}}
+        material={{src: grow, side:'double', transparent:true}}
+        position={'0 '+(cardy+0.002)+' '+cardz} 
+        scale='0.22 0.3 1'
+        rotation='90 180 0' 
+        //animation__click={{property: 'position', startEvents: 'click', easing: 'linear', dur: 300, from:'0 '+(cardy+0.001)+' '+cardz, to: '0 '+(cardy+0.3)+' '+cardz}}
         events={{click: () => this.handlePutClick()}}>
+        </Entity>
+        <a-animation begin="click" attribute="position" easing="linear" dur="300" fill="none" to="0 0.5 0" repeat="0"></a-animation>
         </Entity>
 
       </Entity>
     );
   }
 }
+
+      // <a-entity>
+      //   <a-entity position="2 15 -10" geometry="primitive: sphere" material="color: red"></a-entity>
+      //   <a-animation begin="click" attribute="rotation" dur="1000" fill="none" to="0 300 0" repeat="0"></a-animation>
+      // </a-entity>
 
 export default Lrig;
