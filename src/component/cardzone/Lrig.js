@@ -1,6 +1,5 @@
 import 'aframe';
 import 'aframe-animation-component';
-import 'aframe-particle-system-component';
 import 'babel-polyfill';
 import {Entity} from 'aframe-react';
 import React from 'react';
@@ -56,15 +55,15 @@ class Lrig extends React.Component {
         </Entity>
 
         <Entity>
-        <Entity geometry={{primitive: 'plane'}}
-        material={{src: grow, side:'double', transparent:true}}
-        position={'0 '+(cardy+0.002)+' '+cardz} 
-        scale='0.22 0.3 1'
-        rotation='90 180 0' 
-        //animation__click={{property: 'position', startEvents: 'click', easing: 'linear', dur: 300, from:'0 '+(cardy+0.001)+' '+cardz, to: '0 '+(cardy+0.3)+' '+cardz}}
-        events={{click: () => this.handlePutClick()}}>
-        </Entity>
-        <a-animation begin="click" attribute="position" easing="linear" dur="300" fill="none" to="0 0.5 0" repeat="0"></a-animation>
+          <Entity geometry={{primitive: 'plane'}}
+          material={{src: grow, side:'double', transparent:true}}
+          position={'0 '+(cardy+0.002)+' '+cardz} 
+          scale='0.22 0.3 1'
+          rotation='90 180 0' 
+          //animation__click={{property: 'position', startEvents: 'click', easing: 'linear', dur: 300, from:'0 '+(cardy+0.001)+' '+cardz, to: '0 '+(cardy+0.3)+' '+cardz}}
+          events={{click: () => this.handlePutClick()}}>
+          </Entity>
+          <a-animation begin="click" attribute="position" easing="linear" dur="300" fill="none" to="0 0.5 0" repeat="0"></a-animation>
         </Entity>
 
       </Entity>

@@ -1,5 +1,4 @@
 import 'aframe';
-import 'aframe-particle-system-component';
 import 'babel-polyfill';
 import {Entity} from 'aframe-react';
 import React from 'react';
