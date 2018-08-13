@@ -17,9 +17,9 @@ export const avatarCardsList = {
 "WD17-004":{"img":"lrig1","getcoin":0,"type":1},
 "WD17-003":{"img":"lrig2","getcoin":1,"type":1},
 "WD17-002":{"img":"lrig3","getcoin":2,"type":1},
-"WD17-001":{"img":"lrig4","getcoin":0,"type":1},
-"WD17-006":{"img":"atu1","type":0},
-"WD17-007":{"img":"atu3","type":0},
-"WD17-008":{"img":"atu2","type":0}
+"WD17-001":{"img":"lrig4","getcoin":0,"type":1}//,
+// "WD17-006":{"img":"atu1","type":0},
+// "WD17-007":{"img":"atu3","type":0},
+// "WD17-008":{"img":"atu2","type":0}
 };
 // type 0必杀 1分身

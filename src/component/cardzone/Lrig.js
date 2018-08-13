@@ -17,9 +17,6 @@ class Lrig extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-  }
-
   handlePutClick() {
     store.dispatch( {type: 'LRIG_GROW'} );
   }
