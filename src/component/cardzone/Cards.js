@@ -10,11 +10,12 @@ import cardbk from '../../resource/cardbk_b.png';
 import store from '../../store/store';
 
 class Cards extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
-  componentDidMount() {
+  handleClick() {
+    store.dispatch({ type: 'DECK_DRAW' });
+    if(store.getState().deck.maindeck.length < 1) {
+      store.dispatch({ type: 'DECK_SHUFFLE' });
+    }
   }
 
   render () {
@@ -41,7 +42,7 @@ class Cards extends React.Component {
         scale='0.2 0.28 1'
         rotation='90 180 0' 
         material={{src: cardbk, side:'double', transparent:true}}
-        events={{click: () => store.dispatch({ type: 'DECK_DRAW' })}}>
+        events={{click: () => this.handleClick()}}>
         </Entity>
 
       </Entity>

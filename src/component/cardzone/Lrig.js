@@ -26,7 +26,7 @@ class Lrig extends React.Component {
     const cardz = this.props.deskZ;
     const list = avatarCardsList;
     const name = store.getState().lrig.lrig[store.getState().lrig.lrig.length-1];
-    console.log(list[name]['img'])
+    // console.log(list[name]['img'])
     return (
       <Entity>
 

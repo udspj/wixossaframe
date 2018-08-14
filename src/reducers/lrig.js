@@ -36,8 +36,8 @@ const initState = {
 }
 
 const lrig =  (state = initState, action) => {
-	console.log(action)
-	console.log(state)
+	// console.log(action)
+	// console.log(state)
 	switch (action.type) {
 		case "LRIG_GROW":
 			return { ...state , lrig: grow(state.lrig, state.lrigcardlist),

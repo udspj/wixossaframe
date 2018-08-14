@@ -125,14 +125,14 @@ const deck =  (state = initState, action) => {
 	if(state.handcardselected && action.type !== 'HAND_SELECTED') {
 		return state
 	}
-	console.log(action)
+	// console.log(action)
 	switch (action.type) {
 		case ActionTypes.DECK_SHUFFLE:
 			return { ...state, maindeck: discardBacktoMaindeck(state.useddeck, state.maindeck), useddeck:[] }
 		case ActionTypes.DECK_DRAW:
-			if(state.maindeck.length < 1) {
-				discardBacktoMaindeck(state.useddeck, state.maindeck)
-			}
+			// if(state.maindeck.length < 1) {
+			// 	discardBacktoMaindeck(state.useddeck, state.maindeck)
+			// }
 			if(!checkZoneLimit("hand", state.hand)) {
 				return state
 			}
