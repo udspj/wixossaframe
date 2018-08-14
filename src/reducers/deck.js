@@ -61,7 +61,7 @@ const checkZoneLimit = (zonename, zonecardlist) => {
 	}else if( (zonename == 'hand') && (zonecardlist.length >= 9) ){
 		console.log("手牌上限，可以先弃一些牌再抽牌");
 		return false;
-	}else if( (zonename == 'energy') && (zonecardlist.length >= 10) ){
+	}else if( (zonename == 'energy') && (zonecardlist.length >= 9) ){
 		console.log("能量区上限");
 		return false;
 	}else if( (zonename == 'sgnleft') && (zonecardlist.length >= 1) ){
@@ -104,7 +104,7 @@ const initState = {
 	maindeck: initDeck(),
 	drawcard: "",
 	useddeck: [],
-	hand: ["WD17-009","WD17-014","WD17-010","WD17-009","WD17-013","WD17-014","WD17-017","WD17-018","WD17-018"],
+	hand: [],
 	life: [],
 	energy: [],
 	sgnleft: [],
@@ -128,7 +128,7 @@ const deck =  (state = initState, action) => {
 	console.log(action)
 	switch (action.type) {
 		case ActionTypes.DECK_SHUFFLE:
-			return { ...state, maindeck: discardBacktoMaindeck(state.useddeck, state.maindeck) }
+			return { ...state, maindeck: discardBacktoMaindeck(state.useddeck, state.maindeck), useddeck:[] }
 		case ActionTypes.DECK_DRAW:
 			if(state.maindeck.length < 1) {
 				discardBacktoMaindeck(state.useddeck, state.maindeck)
