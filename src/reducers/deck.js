@@ -9,6 +9,12 @@ const initDeck = () => {
         deck.push(key);
       }
     }
+	let n = deck.length, random;
+    for (var i = 6; i >= 0; i--) {
+        random =  (Math.random() * n--) >>> 0;
+    	deck.splice(random,1);
+    }
+    // console.log(deck)
     return washDeck(deck);
 }
 
