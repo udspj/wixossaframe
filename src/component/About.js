@@ -14,7 +14,7 @@ class About extends React.Component {
     this.state = {
       readme: 'About this demo:\nIf you are using VR on mobile,please enable the WebVR feature in chrome://flags.\nThis is only scene showing for Wixoss battlefield.You cannot battle with anyone.\n\nHow to control cards:\n1. Gaze the top of deck to draw card.\n2. Gaze the card on the desk and gaze one arrow to put card on one zone.\n3. Gaze the LRIG to grow.\n(on normal webpage, gaze will be click)\n\nGaze me to close the readme.',
       showreadme: false,
-      readme_y: 15.35
+      readme_y: 15.38
     };
   }
 
@@ -26,7 +26,7 @@ class About extends React.Component {
     // console.log(store.getState().attentionBoxVisible)
     if(this.state.showreadme) {
       this.setState({readme: 'About this demo:\nIf you are using VR on mobile,please enable the WebVR feature in chrome://flags.\nThis is only scene showing for Wixoss battlefield.You cannot battle with anyone.\n\nHow to control cards:\n1. Gaze the top of deck to draw card.\n2. Gaze the card on the desk and gaze one arrow to put card on one zone.\n3. Gaze the LRIG to grow.\n(on normal webpage, gaze will be click)\n\nGaze me to close the readme.'});
-      this.setState({readme_y: 15.35});
+      this.setState({readme_y: 15.38});
     }else{
       this.setState({readme: 'Gaze me!'});
       this.setState({readme_y: 14.8});
