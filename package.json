@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "aframe": "^0.8.2",
-    "aframe-animation-component": "^5.1.0",
+    "aframe": "^0.9.2",
     "aframe-cubemap-component": "^0.1.4",
     "aframe-particle-system-component": "^1.0.8",
     "aframe-react": "^4.4.0",
