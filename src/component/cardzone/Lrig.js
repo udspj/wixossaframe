@@ -56,10 +56,10 @@ class Lrig extends React.Component {
           position={'0 '+(cardy+0.002)+' '+cardz} 
           scale='0.22 0.3 1'
           rotation='90 180 0' 
-          //animation__click={{property: 'position', startEvents: 'click', easing: 'linear', dur: 300, from:'0 '+(cardy+0.001)+' '+cardz, to: '0 '+(cardy+0.3)+' '+cardz}}
+          animation__click={{property: 'position', startEvents: 'click', easing: 'linear', dur: 300, from:'0 '+(cardy+0.001)+' '+cardz, to: '0 '+(cardy+0.3)+' '+cardz}}
+          animation__reset={{property: 'position', startEvents: 'click', easing: 'linear', delay: 300, dur: 1, to: '0 '+(cardy+0.002)+' '+cardz}}          
           events={{click: () => this.handlePutClick()}}>
           </Entity>
-          <a-animation begin="click" attribute="position" easing="linear" dur="300" fill="none" to="0 0.5 0" repeat="0"></a-animation>
         </Entity>
 
       </Entity>
