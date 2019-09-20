@@ -49,8 +49,9 @@ class App extends React.Component {
         <Entity primitive="a-sky" height="2048" radius="30" src="#skyTexture" theta-length="90" width="2048"/>
         <a-entity id="#rig" position="0 13.8 10">
           <Entity primitive="a-camera">
-            <Entity primitive="a-cursor" animation__click={{property: 'scale', startEvents: 'click', from: '0.1 0.1 0.1', to: '1 1 1', dur: 150}}/>
+            {/* <Entity primitive="a-cursor" animation__click={{property: 'scale', startEvents: 'click', from: '0.1 0.1 0.1', to: '1 1 1', dur: 150}}/> */}
           </Entity>
+          <a-entity laser-controls="hand: right"></a-entity>
         </a-entity>
       </Scene>
     );
